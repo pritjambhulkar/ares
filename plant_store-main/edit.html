@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Edit Product</title>
+</head>
+
+<body>
+
+<h2>Edit Product</h2>
+
+<form method="POST" action="/update/{{ plant[0] }}">
+
+<input type="text" name="name" value="{{ plant[1] }}">
+<input type="number" name="price" value="{{ plant[2] }}">
+<input type="number" name="quantity" value="{{ plant[3] }}">
+
+<select name="category">
+    <option>{{ plant[4] }}</option>
+    <option>Indoor</option>
+    <option>Outdoor</option>
+    <option>Succulent</option>
+</select>
+
+<button>Update</button>
+
+</form>
+
+</body>
+</html>

@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Recommended Plants</title>
+
+<h1>🤖 AI Curated Picks</h1>
+<p style="opacity:0.7;">
+    Handpicked based on your preferences
+</p>
+<p style="font-size:14px; opacity:0.6;">
+    Showing results similar to your cart items. Click a price filter to see more options!
+</p>
+
+
+<div style="text-align:center; margin:20px;">
+    <a href="/recommend?price=200">Under ₹200</a>
+    <a href="/recommend?price=500">Under ₹500</a>
+    <a href="/recommend?price=1000">Under ₹1000</a>
+    <a href="/recommend">All</a>
+</div>
+
+<style>
+body {
+    margin: 0;
+    font-family: 'Poppins', sans-serif;
+    background: radial-gradient(circle at top left, #1b4332, #081c15);
+    color: white;
+}
+
+a {
+    color: #90ee90;
+    text-decoration: none;
+    margin: 0 10px;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+/* NAVBAR */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    padding: 15px 60px;
+    background: rgba(0,0,0,0.5);
+    backdrop-filter: blur(15px);
+}
+
+.navbar a {
+    color: white;
+    text-decoration: none;
+    margin: 0 10px;
+}
+
+/* TITLE */
+.title {
+    text-align: center;
+    margin-top: 40px;
+}
+
+.title h1 {
+    font-size: 36px;
+}
+
+.title p {
+    opacity: 0.7;
+}
+
+/* PRODUCTS GRID */
+.products {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(230px,1fr));
+    gap: 25px;
+    padding: 50px 80px;
+}
+
+/* CARD */
+.card {
+    background: rgba(255,255,255,0.06);
+    backdrop-filter: blur(15px);
+    border-radius: 20px;
+    padding: 15px;
+    text-align: center;
+    transition: 0.3s;
+}
+
+.card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 20px 50px rgba(0,255,150,0.2);
+}
+
+.card img {
+    width: 100%;
+    height: 200px;
+    object-fit: contain;
+}
+
+/* BUTTON */
+button {
+    margin-top: 10px;
+    padding: 8px 15px;
+    border-radius: 20px;
+    border: none;
+    background: linear-gradient(135deg, #52b788, #2d6a4f);
+    color: white;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+button:hover {
+    transform: scale(1.05);
+}
+</style>
+</head>
+
+<body>
+
+
+<!-- TITLE -->
+<div class="title">
+    <h1>🌱 Recommended For You</h1>
+    <p>Handpicked plants you might love</p>
+</div>
+
+<!-- PRODUCTS -->
+<div class="products">
+{% for plant in plants %}
+<div class="card">
+    <img src="{{ url_for('static', filename='uploads/' + plant[5]) }}">
+    <h3>{{ plant[1] }}</h3>
+    <p>₹{{ plant[2] }}</p>
+
+    {% if plant[3] > 0 %}
+    <a href="/add_to_cart/{{ plant[0] }}"><button>Add to Cart</button></a>
+    {% else %}
+    <button disabled style="background: gray;">Out of Stock</button>
+    {% endif %}
+</div>
+{% endfor %}
+
+{% if plants %}
+   <!-- show products -->
+{% else %}
+   <h3 style="text-align:center;">No recommendations yet😔 </h3>
+{% endif %}
+
+</div>
+
+</body>
+</html>

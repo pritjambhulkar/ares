@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Admin</title>
+
+<div style="display:flex; gap:20px;">
+    <div class="card">Total Products: {{ plants|length }}</div>
+    <div class="card">Orders: Coming Soon</div>
+</div>
+
+<style>
+body {
+    background: #081c15;
+    color: white;
+    font-family: Poppins;
+}
+
+.container {
+    width: 80%;
+    margin: auto;
+}
+
+/* FORM */
+form {
+    display: grid;
+    gap: 10px;
+    background: rgba(255,255,255,0.05);
+    padding: 20px;
+    border-radius: 15px;
+}
+
+input, select {
+    padding: 10px;
+    border-radius: 10px;
+    border: none;
+}
+
+/* PRODUCTS */
+.products {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px,1fr));
+    gap: 20px;
+    margin-top: 30px;
+}
+
+.card {
+    background: rgba(255,255,255,0.05);
+    padding: 15px;
+    border-radius: 15px;
+}
+
+button {
+    padding: 8px;
+    border-radius: 10px;
+    border: none;
+}
+
+.delete {
+    background: red;
+    color: white;
+}
+</style>
+
+</head>
+
+<body>
+
+<div class="container">
+
+<h2>Admin Panel 🌿</h2>
+
+<!-- ADD PRODUCT -->
+<form action="/add_product" method="POST" enctype="multipart/form-data">
+<input type="text" name="name" placeholder="Name" required>
+<input type="number" name="price" placeholder="Price" required>
+<input type="number" name="quantity" placeholder="Quantity" required>
+
+<select name="category">
+<option>Indoor</option>
+<option>Outdoor</option>
+<option>Succulent</option>
+<option>Fertilizer</option>
+<option>Vase</option>
+</select>
+
+<input type="file" name="image" required>
+
+<button>Add Product</button>
+</form>
+
+<!-- PRODUCTS -->
+<div class="products">
+{% for plant in plants %}
+<div class="card">
+    <h3>{{ plant[1] }}</h3>
+    <p>₹{{ plant[2] }}</p>
+
+    <a href="/delete/{{ plant[0] }}">
+        <button class="delete">Delete</button>
+
+    <a href="/edit/{{ plant[0] }}">
+    <button>Edit</button>
+</a>
+    </a>
+</div>
+{% endfor %}
+</div>
+
+</div>
+
+</body>
+</html>

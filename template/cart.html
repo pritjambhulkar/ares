@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Cart</title>
+
+<style>
+body {
+    background: #081c15;
+    color: white;
+    font-family: Poppins;
+}
+
+.cart {
+    width: 70%;
+    margin: auto;
+}
+
+.card {
+    display: flex;
+    justify-content: space-between;
+    background: rgba(255,255,255,0.05);
+    padding: 15px;
+    margin: 15px 0;
+    border-radius: 15px;
+}
+
+button {
+    padding: 5px 10px;
+    border-radius: 10px;
+    border: none;
+    cursor: pointer;
+}
+
+.qty {
+    display: flex;
+    gap: 10px;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+button:hover {
+    transform: scale(1.05);
+}
+</style>
+</head>
+
+<body>
+
+<h2 style="text-align:center;">🛒 Your Cart</h2>
+
+<div class="cart">
+
+
+{% for plant in plants %}
+<div class="card">
+    <div>
+        <h3>{{ plant[1] }}</h3>
+        <p>₹{{ plant[2] }}</p>
+    </div>
+
+    <div class="qty">
+        <a href="/remove_from_cart/{{ plant[0] }}"><button>-</button></a>
+        <span>1</span>
+        <a href="/add_to_cart/{{ plant[0] }}"><button>+</button></a>
+    </div>
+</div>
+
+
+{% endfor %}
+
+<h2>Total: ₹{{ total }}</h2>
+
+<a href="/checkout">
+    <button style="background:green;">Proceed to Checkout</button>
+</a>
+<p style="opacity:0.6;">Free delivery on orders above ₹499 🚚</p>
+
+</div>
+
+</body>
+</html>

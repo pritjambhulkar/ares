@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Orders</title>
+
+<style>
+body {
+    margin: 0;
+    font-family: 'Poppins', sans-serif;
+    background: radial-gradient(circle at top left, #1b4332, #081c15);
+    color: white;
+}
+
+/* NAVBAR */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    padding: 15px 60px;
+    background: rgba(0,0,0,0.5);
+    backdrop-filter: blur(15px);
+}
+
+.navbar a {
+    color: white;
+    text-decoration: none;
+    margin: 0 10px;
+}
+
+/* TITLE */
+.title {
+    text-align: center;
+    margin-top: 40px;
+}
+
+/* ORDERS GRID */
+.orders {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px,1fr));
+    gap: 25px;
+    padding: 50px 80px;
+}
+
+/* CARD */
+.card {
+    background: rgba(255,255,255,0.06);
+    backdrop-filter: blur(15px);
+    border-radius: 20px;
+    padding: 20px;
+    transition: 0.3s;
+    position: relative;
+}
+
+.card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 20px 50px rgba(0,255,150,0.2);
+}
+
+/* STATUS BADGE */
+.status {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    background: #52b788;
+    padding: 5px 10px;
+    border-radius: 15px;
+    font-size: 12px;
+}
+
+/* BUTTONS */
+.btn {
+    margin-top: 10px;
+    padding: 8px 15px;
+    border-radius: 20px;
+    border: none;
+    cursor: pointer;
+}
+
+/* DELETE */
+.delete-btn {
+    background: #d00000;
+    color: white;
+}
+
+.delete-btn:hover {
+    background: #9d0208;
+}
+
+/* EMPTY */
+.empty {
+    text-align: center;
+    margin-top: 50px;
+    opacity: 0.7;
+}
+</style>
+
+</head>
+
+<body>
+
+<!-- NAVBAR -->
+<div class="navbar">
+    <h2>🌿 Plant Store</h2>
+    <div>
+        <a href="/">Home</a>
+        <a href="/cart">Cart</a>
+        <a href="/orders">Orders</a>
+        <a href="/recommend">Recommend</a>
+        <a href="/admin">Admin</a>
+    </div>
+</div>
+
+<!-- TITLE -->
+<div class="title">
+    <h1>📦 Your Orders</h1>
+</div>
+
+<!-- ORDERS -->
+{% if orders %}
+<div class="orders">
+    {% for order in orders %}
+    <div class="card">
+
+        <div class="status">Processing</div>
+
+        <h3>👤 {{ order[1] }}</h3>
+        <p>📍 {{ order[2] }}</p>
+        <p>📞 {{ order[3] }}</p>
+        <p>💳 {{ order[5] }}</p>
+        <h2>₹{{ order[4] }}</h2>
+
+        <a href="/delete_order/{{ order[0] }}">
+            <button class="btn delete-btn">Delete Order</button>
+        </a>
+
+    </div>
+    {% endfor %}
+</div>
+
+{% else %}
+<div class="empty">
+    <h3>No orders yet 😔</h3>
+</div>
+{% endif %}
+
+</body>
+</html>

@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+    <style>
+body {
+    margin: 0;
+    font-family: 'Poppins', sans-serif;
+    background: #eef3f0;
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    padding: 15px 50px;
+    background: rgba(46,125,50,0.9);
+    color: white;
+}
+
+.nav-links a {
+    margin: 0 12px;
+    color: white;
+    text-decoration: none;
+}
+
+.container {
+    padding: 30px 50px;
+}
+
+.card {
+    background: white;
+    padding: 20px;
+    border-radius: 15px;
+    margin-bottom: 15px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+button {
+    padding: 8px 15px;
+    border-radius: 20px;
+    border: none;
+    background: #2e7d32;
+    color: white;
+    cursor: pointer;
+}
+</style>
+    <title>Order Success</title>
+    <style>
+        body {
+            font-family: Arial;
+            text-align: center;
+            background: #f5f5f5;
+        }
+
+        .box {
+            margin-top: 100px;
+            background: white;
+            padding: 30px;
+            display: inline-block;
+            border-radius: 10px;
+        }
+
+        .success {
+            color: green;
+            font-size: 24px;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="box">
+    <h2 class="success">🎉 Order Placed Successfully!</h2>
+    <p>Thank you, {{ name }} 🌿</p>
+
+    <a href="/">Continue Shopping</a><br><br>
+    <a href="/orders">View My Orders</a>
+</div>
+
+<div class="navbar">
+    <div>🌿 GreenNest</div>
+    <div class="nav-links">
+        <a href="/">Home</a>
+        <a href="/cart">Cart</a>
+        <a href="/orders">Orders</a>
+        <a href="/recommend">Recommend</a>
+        <a href="/admin">Admin</a>
+    </div>
+</div>
+
+</body>
+</html>
