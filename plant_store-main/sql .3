@@ -1,0 +1,18 @@
+CREATE DATABASE CompanyDB;
+GO
+
+USE CompanyDB;
+GO
+
+CREATE TABLE Employee
+(
+    EmployeeID INT PRIMARY KEY,
+    EmployeeName VARCHAR(100) NOT NULL,
+    Email VARCHAR(100) UNIQUE,
+    Age INT,
+    Department VARCHAR(50),
+    Salary DECIMAL(10,2),
+    JoiningDate DATE,
+    City VARCHAR(50)
+);
+GO

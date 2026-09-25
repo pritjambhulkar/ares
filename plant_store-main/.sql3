@@ -1,0 +1,34 @@
+-- Create Database
+CREATE DATABASE EmployeeDB;
+GO
+
+-- Select Database
+USE EmployeeDB;
+GO
+
+-- Create Employee Table
+CREATE TABLE Employee
+(
+    EmployeeID INT PRIMARY KEY,
+    EmployeeName VARCHAR(100) NOT NULL,
+    Email VARCHAR(100),
+    Department VARCHAR(50),
+    Salary DECIMAL(10,2),
+    JoiningDate DATE
+);
+GO
+
+-- Insert Data
+INSERT INTO Employee
+(EmployeeID, EmployeeName, Email, Department, Salary, JoiningDate)
+VALUES
+(1, 'Rahul Sharma', 'rahul@gmail.com', 'IT', 45000.00, '2024-01-15'),
+(2, 'Priya Patil', 'priya@gmail.com', 'HR', 40000.00, '2024-02-20'),
+(3, 'Amit Verma', 'amit@gmail.com', 'Finance', 55000.00, '2023-08-10'),
+(4, 'Sneha Joshi', 'sneha@gmail.com', 'IT', 50000.00, '2023-11-05'),
+(5, 'Rohan Singh', 'rohan@gmail.com', 'Marketing', 42000.00, '2024-03-12');
+GO
+
+-- Display Employee Table
+SELECT * FROM Employee;
+GO
